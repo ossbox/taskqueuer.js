@@ -52,9 +52,9 @@ function ThreadPool(size, timeout) {
 
     if (timeout === undefined)
     {
-        this.timeout = TIMEOUT; 
+        timeout = TIMEOUT; 
     };
-
+    this.timeout = timeout;
     this._init();
 
 
