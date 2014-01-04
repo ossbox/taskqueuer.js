@@ -176,7 +176,7 @@ Runnable.prototype = {
     run : function(){
         var self = this;
         setTimeout(function(){
-            self.fRun.call(self, self.args);
+            self.fRun.apply(self, self.args);
         }, 0);
 
     },
