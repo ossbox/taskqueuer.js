@@ -27,6 +27,13 @@ THE SOFTWARE.
 /*********************************************************************/
 
 
+/* Small trick of jQuery to avoid caching URL requests */
+$.ajaxSetup({
+    // Disable caching of AJAX responses
+    cache: false
+});
+
+
 
 var threadpool = new ThreadPoll(2, 600);
 
@@ -38,13 +45,14 @@ function myTask(number)
     $.get("http://www.random.org/integers/?num=1&min=1&max=100&col=1&base=10&format=plain&rnd=new", 
         function (data) 
         {
-            console.log("This is my Task, n " + number);
+            console.log("This is my Task, n: " + number);
+            console.log("This is the returned value: " + data);
             $("#content").append(data + "</br>");
             // Set this taskl to be completed. 
             self.complete();        
         }, "html" );
     
-}
+};
 
 var runnable = new Runnable(myTask, 1, 2);
 threadpool.run(runnable);
