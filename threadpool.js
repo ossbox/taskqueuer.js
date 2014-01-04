@@ -33,10 +33,18 @@ THE SOFTWARE.
 /********************************************************************
 ****** ThreadPool ***************************************************
 *********************************************************************/
-
-
-
-function ThreadPoll(size, timeout) {
+/**
+* The idea of this class is to create a thread pool to management many
+* tasks
+*
+* @class ThreadPool
+* @constructor
+* @param {Integer} size It contains the number of threads that will execute 
+* at the same time
+* @param {Integer} timeout It contains the timeout that the queue is waiting 
+* to get more tasks from the queue. 600 is the default timeout.
+*/
+function ThreadPool(size, timeout) {
     var TIMEOUT = 600; 
     this.poolSize = size;
     this.pool = [];
@@ -53,12 +61,27 @@ function ThreadPoll(size, timeout) {
 
 };
 
-ThreadPoll.prototype = { 
+ThreadPool.prototype = { 
+
+    /**
+    * This methods puts a task in thread pool to run.
+    *
+    * @method run
+    * @param {Runnable} runnable This is a Runnable object which contains the link
+    * to the function and also the priority
+    */
+
     run : function(runnable) {
         this.pool.push(runnable);
 
     },
 
+
+    /**
+    * This methods contains the loop to start the threadpool. 
+    * Note: it is a private method
+    * @method _init
+    */
     _init : function(){
         var self =  this; // This is very nice advise by Eriksson Monteiro! :D 
         this.poolHandler = setInterval(function() { 
@@ -88,13 +111,19 @@ ThreadPoll.prototype = {
 /********************************************************************
 ****** Runnable *****************************************************
 *********************************************************************/
-
+/**
+* This class accept the task to run. 
+* This contains the function and priority. For instance, if the priority is 
+* bigger than the others in the queue, the task will be executed firstly.
+*
+* @class Runnable
+* @constructor
+* @param fRun {function} the function to run the task
+* @param priority {Integer} priority of this task. 1 is the default priority
+*/
 
 function Runnable(fRun, priority ){
-    /**
-    @fRun: the function that execute tasks 
-    @priority: priority of the task, priority is defined by the user. 1 is default.
-    */
+    
     if (priority===undefined)
     {
         priority = 1; 
@@ -110,15 +139,40 @@ function Runnable(fRun, priority ){
 
 
 Runnable.prototype = { 
+    /**
+    * This methods should be called when the task is completed. 
+    *
+    * @method complete
+    */
+
     complete : function() {
         this.completed = true;
     },
+    /**
+    * This methods returns if the task is already complete or not. 
+    *
+    * @method isCompleted
+    * @return {Boolean} returns if the task is completed or not.
+    */
+
     isCompleted : function() {
         return this.completed;
     },
+    /**
+    * Change priority to this task.
+    *
+    * @method setPriority
+    * @param {Integer} priority Change the priority of then task
+    */
+
     setPriority : function(priority) {
         this.priority = priority;
     },
+    /**
+    * This methods runs the task. Call the function fRun with the passed arguments. 
+    *
+    * @method run
+    */
     run : function(){
         var self = this;
         setTimeout(function(){

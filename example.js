@@ -27,8 +27,11 @@ THE SOFTWARE.
 /*********************************************************************/
 
 
-
-var threadpool = new ThreadPoll(2, 600);
+/**
+ * 2 is the size of threadpool 
+ * 600 is the interval to fetch new tasks. 
+ */
+var threadpool = new ThreadPool(2, 600);
 
 function myTask(number)
 {

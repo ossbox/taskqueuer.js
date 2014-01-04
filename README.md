@@ -30,5 +30,5 @@ THE SOFTWARE.
 
 Authors 
 -------
-* Luís A. Bastião Silva <bastiao@ua.pt>
+* Luís A. Bastião Silva <luis.kop@gmail.com>
 * Eriksson Monteiro <eriksson.monteiro@ua.pt>
