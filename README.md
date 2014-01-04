@@ -4,6 +4,22 @@ Light Threadpool in Javascript
 This is a light threadpool library to javascript. In this threadpool you can set a priority for each task and change dynamically. Furthermore, you can also define the thread pool size. 
 
 
+
+Similar projects
+----------------
+* https://github.com/andywer/threadpool-js: This project allows to create threadpool in javascript. The main difference between our project is that we do not use works in Javascript. Another important issue is the priorities to the tasks. 
+* https://github.com/inh3/nPool: Nice implementation, but it is for Node.JS (server side) 
+
+
+
+
+
+Authors 
+-------
+* Luís A. Bastião Silva <luis.kop@gmail.com>
+* Eriksson Monteiro <eriksson.monteiro@ua.pt>
+
+
 License 
 --------
 The MIT License (MIT)
@@ -26,9 +42,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-
-Authors 
--------
-* Luís A. Bastião Silva <luis.kop@gmail.com>
-* Eriksson Monteiro <eriksson.monteiro@ua.pt>
