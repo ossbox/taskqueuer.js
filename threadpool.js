@@ -91,7 +91,7 @@ ThreadPool.prototype = {
                 return; 
             };
             self.pool = self.pool.sort(function (x, y) {
-                return x.priority < y.priority;
+                return x.priority - y.priority;
             } );
             for (var i = 0; i < self.poolSize && i < self.pool.length ; i++){
                 var r = self.pool.shift();
