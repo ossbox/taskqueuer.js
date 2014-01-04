@@ -60,12 +60,12 @@ $(document).ready(function(){
 
     /**
      * 2 is the size of threadpool 
-     * 600 is the interval to fetch new tasks. 
+     * 400 is the interval to fetch new tasks. 
      */
-    var threadpool = new ThreadPool(2, 60);
+    var threadpool = new ThreadPool(2, 400);
     //global tile
     var tileID = 0;
-    function myTask(url)
+    function myTask(url, color)
     {
         // Execute myStaff 
         
@@ -83,8 +83,33 @@ $(document).ready(function(){
         imageObj.src = url;
     };
     for(var i = 0 ; i < colors.length; i++){
-        var runnable = new Runnable(myTask, 1, urlMap[colors[i]]);
+        var runnable = new Runnable(myTask, 1, urlMap[colors[i]], colors[i]);
         threadpool.run(runnable);
     }
     threadpool.destroy();
+
+    function changePoolPriority(color){
+        for(var i = 0; i < threadpool.pool.length; i++){
+            if(threadpool.pool[i].args[1] == color){
+                threadpool.pool[i].setPriority(0);
+            }else{
+                threadpool.pool[i].setPriority(1);
+            }
+        }
+    }
+    /*buttons handlers*/
+    $('#btnred').click(function(){
+        changePoolPriority('red');
+    });
+    $('#btnblue').click(function(){
+        changePoolPriority('blue')
+    });
+    $('#btngreen').click(function(){
+        changePoolPriority('green');
+    });
+    $('#btnrandom').click(function(){
+        for(var i = 0; i < threadpool.pool.length; i++){
+            threadpool.pool[i].setPriority(Math.floor(Math.random()*3));
+        }
+    });
 });
