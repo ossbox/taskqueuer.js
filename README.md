@@ -7,8 +7,8 @@ This is a light threadpool library to javascript. In this threadpool you can set
 
 Similar projects
 ----------------
-* https://github.com/andywer/threadpool-js: This project allows to create threadpool in javascript. The main difference between our project is that we do not use works in Javascript. Another important issue is the priorities to the tasks. 
-* https://github.com/inh3/nPool: Nice implementation, but it is for Node.JS (server side) 
+* https://github.com/andywer/threadpool-js : This project allows to create threadpool in javascript. The main difference between our project is that we do not use works in Javascript. Another important issue is the priorities to the tasks. 
+* https://github.com/inh3/nPool : Nice implementation, but it is for Node.JS (server side) 
 
 
 
