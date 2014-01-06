@@ -27,12 +27,6 @@ THE SOFTWARE.
 /*********************************************************************/
 
 $(document).ready(function(){
-    /* Small trick of jQuery to avoid caching URL requests */
-    $.ajaxSetup({
-        // Disable caching of AJAX responses
-        cache: false
-    });
-
 
     /*create canvas*/
     var canvas = document.getElementById('panel');
