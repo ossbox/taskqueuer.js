@@ -37,12 +37,36 @@
 <p>This is a light threadpool library to javascript. In this threadpool you can set a priority for each task and change dynamically. Furthermore, you can also define the thread pool size. </p>
 
 <h2>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<pre><code>var threadpool = new ThreadPool(2);
+
+function myTask(number)
+{
+    // Execute myStaff 
+    console.log("This is my Task, n " + number);
+    // Set this taskl to be completed. 
+    this.complete();
+}
+
+threadpool.run(new Runnable(myTask, 1, 1));
+threadpool.run(new Runnable(myTask, 1, 2));
+threadpool.run(new Runnable(myTask, 1, 3));
+var runnable = new Runnable(myTask, 1, 4);
+threadpool.run(runnable);
+threadpool.run(new Runnable(myTask, 1, 5));
+runnable.setPriority(0); // burst priority 
+threadpool.run(new Runnable(myTask, 1, 6));
+threadpool.destroy();
+</code></pre>
+
+<h2>
 <a name="demosexamples" class="anchor" href="#demosexamples"><span class="octicon octicon-link"></span></a>Demos/Examples</h2>
 
 <ul>
-<li>Basic example with jquery requests: <a href="http://ossbox.github.io/threadpool.js/examples-jquery.html">http://ossbox.github.io/threadpool.js/examples-jquery.html</a>
-</li>
 <li>Graphic example with multiple gets and draw in canvas: <a href="http://ossbox.github.io/threadpool.js/examples-canvas-draw.html">http://ossbox.github.io/threadpool.js/examples-canvas-draw.html</a>
+</li>
+<li>Basic example with jquery requests: <a href="http://ossbox.github.io/threadpool.js/examples-jquery.html">http://ossbox.github.io/threadpool.js/examples-jquery.html</a>
 </li>
 </ul><h2>
 <a name="similar-projects" class="anchor" href="#similar-projects"><span class="octicon octicon-link"></span></a>Similar projects</h2>
