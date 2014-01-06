@@ -3,11 +3,38 @@ Light Threadpool in Javascript
 
 This is a light threadpool library to javascript. In this threadpool you can set a priority for each task and change dynamically. Furthermore, you can also define the thread pool size. 
 
+Example
+---------
+
+```
+var threadpool = new ThreadPool(2);
+
+function myTask(number)
+{
+    // Execute myStaff 
+    console.log("This is my Task, n " + number);
+    // Set this taskl to be completed. 
+    this.complete();
+}
+
+threadpool.run(new Runnable(myTask, 1, 1));
+threadpool.run(new Runnable(myTask, 1, 2));
+threadpool.run(new Runnable(myTask, 1, 3));
+var runnable = new Runnable(myTask, 1, 4);
+threadpool.run(runnable);
+threadpool.run(new Runnable(myTask, 1, 5));
+runnable.setPriority(0); // burst priority 
+threadpool.run(new Runnable(myTask, 1, 6));
+threadpool.destroy();
+```
 
 Demos/Examples
 -------
-* Basic example with jquery requests: http://ossbox.github.io/threadpool.js/examples-jquery.html
 * Graphic example with multiple gets and draw in canvas: http://ossbox.github.io/threadpool.js/examples-canvas-draw.html
+* Basic example with jquery requests: http://ossbox.github.io/threadpool.js/examples-jquery.html
+
+
+
 
 
 
