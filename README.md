@@ -1,4 +1,4 @@
-Light Threadpool in Javascript 
+Light Taskqueue in Javascript 
 ----------
 
 This is a light threadpool library to javascript. In this threadpool you can set a priority for each task and change dynamically. Furthermore, you can also define the thread pool size. 
@@ -30,8 +30,8 @@ threadpool.destroy();
 
 Demos/Examples
 -------
-* Graphic example with multiple gets and draw in canvas: http://ossbox.github.io/threadpool.js/examples-canvas-draw.html
-* Basic example with jquery requests: http://ossbox.github.io/threadpool.js/examples-jquery.html
+* Graphic example with multiple gets and draw in canvas: http://ossbox.github.io/taskqueuer.js/examples-canvas-draw.html
+* Basic example with jquery requests: http://ossbox.github.io/taskqueuer.js/examples-jquery.html
 
 
 
