@@ -1,4 +1,4 @@
-Light Taskqueue in Javascript 
+Light Task Queue in Javascript 
 ----------
 
 This is a light threadpool library to javascript. In this threadpool you can set a priority for each task and change dynamically. Furthermore, you can also define the thread pool size. 
