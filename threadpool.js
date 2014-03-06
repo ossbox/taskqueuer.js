@@ -104,10 +104,8 @@ ThreadPool.prototype = {
 
         }, this.timeout);
     },
-    destroy : function() {
-        if(arguments.length == 1){
-            this.onDie=arguments[0];
-        }
+    destroy : function(cb) {
+        this.onDie = cb;
         this.die = true;
     }  
 };
