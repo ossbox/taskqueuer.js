@@ -50,6 +50,7 @@ function TaskQueuer(size, timeout) {
     this.pool = [];
     this.die = false;
     this.onDie = null;
+    this.running_pool = [];
 
     if (timeout === undefined)
     {
@@ -93,11 +94,25 @@ TaskQueuer.prototype = {
 
                 return; 
             };
+
+            for(var i = 0; i < self.running_pool.length; i++){
+                if(self.running_pool[i].isCompleted()===true){
+                    self.running_pool.splice(i, 1);
+                }
+            }
+
+            if(self.running_pool.length >= self.poolSize){
+                return;
+            }
+
             self.pool = self.pool.sort(function (x, y) {
                 return x.priority - y.priority;
             } );
-            for (var i = 0; i < self.poolSize && i < self.pool.length ; i++){
+
+            var items_count = self.poolSize - self.running_pool.length;
+            for (var i = 0; i < items_count && i < self.pool.length ; i++){
                 var r = self.pool.shift();
+                self.running_pool.push(r);
                 r.run();
             }
             
@@ -177,10 +192,6 @@ Runnable.prototype = {
     * @method run
     */
     run : function(){
-        var self = this;
-        setTimeout(function(){
-            self.fRun.apply(self, self.args);
-        }, 0);
-
+        this.fRun.apply(this, this.args);
     }
 };
