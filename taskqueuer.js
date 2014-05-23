@@ -31,20 +31,20 @@ THE SOFTWARE.
 
 
 /********************************************************************
-****** ThreadPool ***************************************************
+****** TaskQueuer ***************************************************
 *********************************************************************/
 /**
-* The idea of this class is to create a thread pool to management many
+* The idea of this class is to create a task queuer to management many
 * tasks
 *
-* @class ThreadPool
+* @class TaskQueuer
 * @constructor
-* @param {Integer} size It contains the number of threads that will execute 
+* @param {Integer} size It contains the number of tasks that will execute 
 * at the same time
 * @param {Integer} timeout It contains the timeout that the queue is waiting 
 * to get more tasks from the queue. 600 is the default timeout.
 */
-function ThreadPool(size, timeout) {
+function TaskQueuer(size, timeout) {
     var TIMEOUT = 600; 
     this.poolSize = size;
     this.pool = [];
@@ -59,10 +59,10 @@ function ThreadPool(size, timeout) {
     this._init();
 };
 
-ThreadPool.prototype = { 
+TaskQueuer.prototype = { 
 
     /**
-    * This methods puts a task in thread pool to run.
+    * This methods puts a task in task queuer to run.
     *
     * @method run
     * @param {Runnable} runnable This is a Runnable object which contains the link
@@ -76,7 +76,7 @@ ThreadPool.prototype = {
 
 
     /**
-    * This methods contains the loop to start the threadpool. 
+    * This methods contains the loop to start the TaskQueuer. 
     * Note: it is a private method
     * @method _init
     */
